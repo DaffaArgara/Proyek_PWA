@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novel Reader</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="app.webmanifest" />
+    <link rel="icon" href="icon-192.png" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="title-group">
+        <h1>📖 Novel Reader</h1>
+        <p>Read your favorite novels anywhere, anytime</p>
+      </div>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+    </header>
+
+    <main class="container">
+      <h2 class="library-title">Your Library</h2>
+      <div class="library" id="libraryView">
+        <!-- Novel Cards -->
+        <div class="card" data-novel="0">
+          <div class="novel-cover">
+            <img
+              src="Cover/The-Great-Adventure.jpg"
+              alt="The Great Adventure"
+            />
+          </div>
+          <h3>The Great Adventure</h3>
+          <p>Chapter 5/5</p>
+        </div>
+        <div class="card" data-novel="1">
+          <div class="novel-cover">
+            <img
+              src="Cover/Mystery-Old-House.jpg"
+              alt="Mystery of the Old House"
+            />
+          </div>
+          <h3>Mystery of the Old House</h3>
+          <p>Chapter 5/5</p>
+        </div>
+        <div class="card" data-novel="2">
+          <div class="novel-cover">
+            <img src="Cover/Love-in-Paris.jpg" alt="Love in Paris" />
+          </div>
+          <h3>Love in Paris</h3>
+          <p>Chapter 5/5</p>
+        </div>
+      </div>
+
+      <!-- Tampilan baca bab -->
+      <div id="readingView" class="hidden">
+        <div class="flex-header">
+          <button id="backBtn">← Back</button>
+          <span class="chapter-indicator">
+            Chapter <span id="currentChapter">1</span>/<span id="totalChapters"
+              >2</span
+            >
+          </span>
+        </div>
+
+        <h2 id="novelTitle">Judul Novel</h2>
+        <h3 id="chapterTitle">Judul Bab</h3>
+        <div id="chapterContent" class="chapter-text"></div>
+
+        <div class="nav-buttons">
+          <button id="prevChapter" disabled>Previous Chapter</button>
+          <button id="nextChapter">Next Chapter</button>
+        </div>
+      </div>
+
+      <button id="installBtn" hidden>Install App</button>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
