@@ -1,7 +1,8 @@
+// Variabel untuk menyimpan prompt instalasi PWA
 let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
 
-// Service Worker
+// ✅ Daftarkan Service Worker saat halaman dimuat
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -11,26 +12,27 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-// Install PWA
+// ✅ Tangani event sebelum instalasi PWA muncul
 window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.hidden = false;
+  e.preventDefault(); // Cegah prompt default dari browser
+  deferredPrompt = e; // Simpan prompt agar bisa dipicu manual
+  installBtn.hidden = false; // Tampilkan tombol install
 
   installBtn.addEventListener("click", () => {
     installBtn.hidden = true;
-    deferredPrompt.prompt();
+    deferredPrompt.prompt(); // Tampilkan dialog instalasi
   });
 });
 
-// Dark Mode
+// 🌙 Fitur toggle Dark Mode
 const themeToggle = document.getElementById("themeToggle");
 themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+  document.body.classList.toggle("dark"); // Tambah/hapus class dark
   const isDark = document.body.classList.contains("dark");
-  localStorage.setItem("theme", isDark ? "dark" : "light");
+  localStorage.setItem("theme", isDark ? "dark" : "light"); // Simpan tema di localStorage
 });
 
+// 🎨 Saat halaman dimuat, terapkan tema yang disimpan sebelumnya
 window.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
@@ -38,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// === DATA NOVEL ===
+// 📚 Data Novel: judul, bab, dan isi paragraf
 const novels = [
   {
     title: "The Great Adventure",
@@ -197,9 +199,11 @@ const novels = [
   },
 ];
 
+// 🔢 Variabel penanda novel & bab aktif
 let novelIndex = 0;
 let chapterIndex = 0;
 
+// 🔗 Ambil elemen DOM
 const libraryView = document.getElementById("libraryView");
 const readingView = document.getElementById("readingView");
 const backBtn = document.getElementById("backBtn");
@@ -211,6 +215,7 @@ const totalChapters = document.getElementById("totalChapters");
 const nextBtn = document.getElementById("nextChapter");
 const prevBtn = document.getElementById("prevChapter");
 
+// 📖 Render tampilan bab berdasarkan indeks
 function renderChapter(index) {
   const chapters = novels[novelIndex].chapters;
   const chapter = chapters[index];
@@ -225,10 +230,12 @@ function renderChapter(index) {
     chapterContent.appendChild(p);
   });
 
+  // Nonaktifkan tombol jika di awal/akhir
   prevBtn.disabled = index === 0;
   nextBtn.disabled = index === chapters.length - 1;
 }
 
+// 👉 Navigasi ke bab berikutnya
 nextBtn.addEventListener("click", () => {
   const chapters = novels[novelIndex].chapters;
   if (chapterIndex < chapters.length - 1) {
@@ -237,6 +244,7 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
+// 👈 Navigasi ke bab sebelumnya
 prevBtn.addEventListener("click", () => {
   if (chapterIndex > 0) {
     chapterIndex--;
@@ -244,11 +252,13 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
+// 🔙 Kembali ke halaman perpustakaan
 backBtn.addEventListener("click", () => {
   readingView.classList.add("hidden");
   libraryView.classList.remove("hidden");
 });
 
+// 📚 Klik kartu novel untuk membaca
 const cards = document.querySelectorAll(".card");
 cards.forEach((card, index) => {
   card.style.cursor = "pointer";
@@ -262,6 +272,7 @@ cards.forEach((card, index) => {
   });
 });
 
+// 🏁 Tampilkan bab pertama saat halaman selesai dimuat
 window.addEventListener("DOMContentLoaded", () => {
   novelTitle.textContent = novels[0].title;
   renderChapter(chapterIndex);

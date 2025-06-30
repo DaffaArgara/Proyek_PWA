@@ -1,4 +1,5 @@
 :root {
+  /* Warna default (untuk light mode) */
   --primary-color: #4c3fe0;
   --background: #f5f5f5;
   --text-color: #222;
@@ -7,6 +8,7 @@
 }
 
 body.dark {
+  /* Warna untuk dark mode */
   --background: #1e1e2f;
   --text-color: #eee;
   --card-bg: #2c2c3c;
@@ -14,6 +16,7 @@ body.dark {
 }
 
 body {
+  /* Pengaturan font, margin, dan transisi warna */
   font-family: "Segoe UI", sans-serif;
   margin: 0;
   background: var(--background);
@@ -22,6 +25,7 @@ body {
 }
 
 .header {
+  /* Gaya header di bagian atas aplikasi */
   background-color: var(--primary-color);
   color: white;
   padding: 1.5rem;
@@ -34,16 +38,19 @@ body {
 }
 
 .title-group h1 {
+  /* Hilangkan margin default pada judul */
   margin: 0;
 }
 
 .title-group p {
+  /* Deskripsi singkat di bawah judul */
   margin: 0;
   font-size: 0.9rem;
   opacity: 0.9;
 }
 
 .theme-toggle {
+  /* Tombol toggle dark/light mode */
   background: rgba(255, 255, 255, 0.1);
   border: none;
   color: white;
@@ -54,23 +61,27 @@ body {
 }
 
 .container {
+  /* Kontainer utama isi halaman */
   max-width: 1100px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
 .library-title {
+  /* Judul bagian perpustakaan */
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 .library {
+  /* Tata letak grid kartu novel */
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .card {
+  /* Gaya kartu novel */
   background: var(--card-bg);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -80,10 +91,12 @@ body {
 }
 
 .card:hover {
+  /* Animasi saat hover pada kartu */
   transform: translateY(-5px);
 }
 
 .novel-cover {
+  /* Kotak sampul novel */
   height: 180px;
   background-color: var(--cover-bg);
   display: flex;
@@ -94,7 +107,9 @@ body {
   border-radius: 6px;
   margin-bottom: 1rem;
 }
+
 .novel-cover img {
+  /* Gambar sampul novel */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -102,16 +117,19 @@ body {
 }
 
 .card h3 {
+  /* Judul novel */
   margin: 0;
   font-size: 1.1rem;
 }
 
 .card p {
+  /* Info jumlah bab */
   margin: 0.3rem 0 0 0;
   color: #666;
 }
 
 button#installBtn {
+  /* Tombol untuk install aplikasi (PWA) */
   margin-top: 2rem;
   padding: 10px 15px;
   background: var(--primary-color);
@@ -120,11 +138,14 @@ button#installBtn {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .hidden {
+  /* Digunakan untuk menyembunyikan elemen */
   display: none;
 }
 
 .flex-header {
+  /* Header untuk navigasi bab (Next/Prev) */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -132,11 +153,13 @@ button#installBtn {
 }
 
 .chapter-text p {
+  /* Paragraf isi cerita */
   margin-bottom: 1rem;
   text-align: justify;
 }
 
 .nav-buttons {
+  /* Tombol navigasi bab */
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -144,6 +167,7 @@ button#installBtn {
 }
 
 .nav-buttons button {
+  /* Gaya umum untuk tombol navigasi */
   padding: 10px 16px;
   font-weight: 600;
   border: none;
@@ -152,10 +176,12 @@ button#installBtn {
 }
 
 #prevChapter {
+  /* Tombol bab sebelumnya */
   background: #ddd;
 }
 
 #nextChapter {
+  /* Tombol bab berikutnya */
   background: var(--primary-color);
   color: white;
 }
